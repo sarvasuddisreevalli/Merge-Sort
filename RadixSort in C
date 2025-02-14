@@ -1,0 +1,40 @@
+#include<stdio.h>
+#include<math.h>
+int get_max(int arr[],int n){
+	int max=arr[0];
+	for(int i=1;i<n;i++){
+		if(arr[i]>max) max=arr[i];
+	}
+	return max;
+}
+// function to get max element in array for cnting how many buckets (times) the loop iterates
+int main(void){
+	int n;
+	scanf("%d",&n);
+	int arr[n];
+	for(int i=0;i<n;i++){
+		scanf("%d",&arr[i]);
+	}
+	int max=get_max(arr,n),dig=log10(max)+1;
+	int buckets[10][n];
+	int e=1;
+	for(int k=0;k<dig;k++){
+		int cnt[10]={0};
+		for(int j=0;j<n;j++){
+			int pos=(arr[j]/e)%10;
+			buckets[pos][cnt[pos]]=arr[j];
+			cnt[pos]++;
+		}
+		int x=0;
+		for(int i=0;i<10;i++){
+			for(int j=0;j<cnt[i];j++){
+				arr[x]=buckets[i][j];
+				x++;
+			}
+		}
+		e*=10;
+	}
+	for(int i=0;i<n;i++){
+		printf("%d ",arr[i]);
+	}
+}	
