@@ -1,0 +1,31 @@
+#include <stdio.h>
+void InsertionSort(int A[],int n){
+	
+    for(int i=1;i<n;i++){
+    	
+        int j=i-1,temp=A[i];// storing A[i] value in temp because its changing when j+1=(i-1)+1
+        
+        while(j>=0 && A[j]>temp){// checking if element in left part is greater than curr
+        
+            A[j+1]=A[j] ; // assigning curr value to next if curr < A[i]
+            
+            j--;
+        }
+        A[j+1]=temp;
+    }
+}
+int main() {
+	int n;
+	scanf("%d",&n);
+	
+	int A[n];
+	for(int i=0;i<n;i++){
+	    scanf("%d",&A[i]);
+	}
+	int B[n];
+	// calling function
+	InsertionSort(A,n);
+	for(int i=0;i<n;i++){
+	    printf("%d ",B[i]);
+	}
+}
