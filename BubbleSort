@@ -1,0 +1,36 @@
+#include<stdio.h>
+// Normal Bubble Sort in C
+void BubbleSort(int arr[],int i,int n){
+	if(i==n)return;
+	for(int j=i+1;j<n;j++){
+		if(arr[i]>arr[j]){
+			int temp=arr[i];
+			arr[i]=arr[j];
+			arr[j]=temp;
+		}
+	}
+	BubbleSort(arr,i+1,n);
+}
+// using recursion
+void Bubblesort(int arr[],int i,int j,int n){
+	// basecase for loop1
+	if(i>=n) return;
+	//basecase for loop2
+	if(j>=n-1) return;
+	if(arr[j]>arr[j+1]){
+		int temp=arr[j];
+		arr[j]=arr[j+1];
+		arr[j+1]=temp;
+	}
+	Bubblesort(arr,i,j+1,n);//for inner loop of bs
+	Bubblesort(arr,i+1,0,n);//for outer loop in bs
+}
+int main(){
+	int n;
+	scanf("%d",&n);
+	int arr[n];
+	for(int i=0;i<n;i++)scanf("%d",&arr[i]);
+	//BubbleSort(arr,0,n);// Nrml Bubble sort
+	//Bubblesort(arr,0,0,n);//uses recursion
+	for(int i=0;i<n;i++) printf("%d ",arr[i]);
+}
