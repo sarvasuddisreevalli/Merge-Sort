@@ -17,12 +17,11 @@ int partition(int arr[],int key,int start,int end){
 }
 
 void QuickSort(int arr[],int start,int end){
-	if(start<end){
-		int p=arr[start] ;
-		p=partition(arr,p,start,end);
-		QuickSort(arr,start,p-1);
-		QuickSort(arr,p+1,end);
-	}
+	if(start>=end) return;
+	int p=arr[start];
+	p=partition(arr,p,start,end);
+	QuickSort(arr,start,p-1);
+	QuickSort(arr,p+1,end);
 }
 
 int main(){
